@@ -77,7 +77,7 @@ int Location(SqList L, Status(*comapre(ElemType, ElemType)), ElemType e) {
 	}
 	L.length--;
 	return 1;
-}//Ïú»Ù
+}//ÃÃºÂ»Ã™
 void destroy(SqList &L){
 
 	L.length = 0;
