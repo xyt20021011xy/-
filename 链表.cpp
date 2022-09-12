@@ -4,104 +4,104 @@
 using namespace std;
 typedef int ElemType ;
 typedef int Status;
-//¹¹ÔìÁ´±í
+//æ„é€ é“¾è¡¨
 typedef struct LNode{
 	ElemType val;
 	LNode *next;
 	
 }LNode,*LinkList;
-//³õÊ¼»¯
+//åˆå§‹åŒ–
 Status Initlist(LinkList& L);
-//´´ÔìÖ¸¶¨ÊıÁ¿³õÊ¼»¯
+//åˆ›é€ æŒ‡å®šæ•°é‡åˆå§‹åŒ–
 Status createList(LinkList& L, int len);
-//²åÈë
+//æ’å…¥
 Status insertLinkList(LinkList &L, int pos, ElemType e);
-//ĞŞ¸Ä
+//ä¿®æ”¹
 Status modifyLinkList(LinkList& l, int pos, ElemType e);
-//É¾³ı
+//åˆ é™¤
 Status deleteLinkList(LinkList &L, int pos, ElemType &e);
-//×ªÖÃ
+//è½¬ç½®
 void reverseLinkList(LinkList &L);
-//ÖµËÑË÷
+//å€¼æœç´¢
 int seachLinkList(LinkList L, ElemType e);
-//Î»Ğò²éÕÒ
+//ä½åºæŸ¥æ‰¾
 int seach1LinkList(LinkList L, int pos);
-//È¡±í³¤
+//å–è¡¨é•¿
 int getLen(LinkList  L);
 //
 int isEmpty(LinkList& L);
-//´òÓ¡
+//æ‰“å°
 void printLinkList(LinkList L);
-//Ïú»ÙÁ´±í
+//é”€æ¯é“¾è¡¨
 void DestoryLinkList(LinkList &L);
-//ÅĞ¿Õ
+//åˆ¤ç©º
 void ListIsEmpty(LinkList& L);
 
 
-//²âÊÔ
+//æµ‹è¯•
 int main(){
     LinkList L;
     Initlist(L);
     ElemType e;
     int len, pos;
-    printf("´´½¨ÔªËØ¸öÊı£º");
+    printf("åˆ›å»ºå…ƒç´ ä¸ªæ•°ï¼š");
     scanf("%d", &len);
-    printf("\nÇëÊäÈë£º");
+    printf("\nè¯·è¾“å…¥ï¼š");
 
     createList(L, len);
 
-    printf("µ±Ç°Á´±íËùÓĞÔªËØ£º");
+    printf("å½“å‰é“¾è¡¨æ‰€æœ‰å…ƒç´ ï¼š");
 
     printLinkList(L);
     printf("\n");
     printf("%d", getLen(L));
-    printf("\n²åÈëÎ»ÖÃºÍ²åÈëÖµ(ÖĞ¼äÓÃ¿Õ¸ñ¸ô¿ª)£º");
+    printf("\næ’å…¥ä½ç½®å’Œæ’å…¥å€¼(ä¸­é—´ç”¨ç©ºæ ¼éš”å¼€)ï¼š");
     scanf("%d%d", &pos, &e);
 
     insertLinkList(L, pos, e);
 
-    printf("\n²åÈëÔªËØºóÁ´±íËùÓĞÔªËØ£º");
+    printf("\næ’å…¥å…ƒç´ åé“¾è¡¨æ‰€æœ‰å…ƒç´ ï¼š");
 
     printLinkList(L);
 
 
-    printf("ÇëÊäÈëĞŞ¸ÄÔªËØÎ»ÖÃ¼°´óĞ¡");
+    printf("è¯·è¾“å…¥ä¿®æ”¹å…ƒç´ ä½ç½®åŠå¤§å°");
     int a, b;
     scanf("%d %d", &a, &b);
     modifyLinkList(L, a, b);
     printLinkList(L);
 
-    printf("\nÇëÊäÈëÉ¾³ıÔªËØÎ»ÖÃ£º");
+    printf("\nè¯·è¾“å…¥åˆ é™¤å…ƒç´ ä½ç½®ï¼š");
     scanf("%d", &pos);
 
     deleteLinkList(L, pos, e);
 
-    printf("\nÔªËØ%dÒÑÉ¾³ı", e);
-    printf("\nÉ¾³ıºóÁ´±íËùÓĞÔªËØ£º");
+    printf("\nå…ƒç´ %då·²åˆ é™¤", e);
+    printf("\nåˆ é™¤åé“¾è¡¨æ‰€æœ‰å…ƒç´ ï¼š");
 
     printLinkList(L);
 
-    printf("\nÇëÊäÈë²éÕÒÔªËØ£º");
+    printf("\nè¯·è¾“å…¥æŸ¥æ‰¾å…ƒç´ ï¼š");
     scanf("%d", &e);
     printf("%d", seachLinkList(L, e));
 
-    printf("ÇëÊäÈëÒª²éÕÒÎ»Ğò");
+    printf("è¯·è¾“å…¥è¦æŸ¥æ‰¾ä½åº");
     int c;
     scanf("%d", &c);
     printf("%d", seach1LinkList(L, c));
     
 
-    //Ïú»ÙÁ´±í
+    //é”€æ¯é“¾è¡¨
    DestoryLinkList(L);
 
-    //ÅĞ¿Õ
+    //åˆ¤ç©º
     //ListIsEmpty(L);
     return 0;
 }
 
 
 
-//³õÊ¼»¯²Ù×÷
+//åˆå§‹åŒ–æ“ä½œ
 Status Initlist(LinkList& L) {
     L = (LNode*)malloc(sizeof(LNode));
     if (!L)exit(0);
@@ -111,7 +111,7 @@ Status Initlist(LinkList& L) {
     return 1;
     
 }
-//´´ÔìÖ¸¶¨ÊıÁ¿³õÊ¼»¯
+//åˆ›é€ æŒ‡å®šæ•°é‡åˆå§‹åŒ–
 Status createList(LinkList &L, int len) {
     ElemType e;
    
@@ -120,7 +120,7 @@ Status createList(LinkList &L, int len) {
     r = L;
     for (int i = 0; i < len; i++) {
         scanf("%d", &e);
-        n = (LNode*)malloc(sizeof(LNode*));//ÉêÇë¿Õ¼ä
+        n = (LNode*)malloc(sizeof(LNode*));//ç”³è¯·ç©ºé—´
         if (!n)exit(0);
         n->val = e;
         n->next = NULL;
@@ -129,7 +129,7 @@ Status createList(LinkList &L, int len) {
     }
     return 1;
 }
-//È¡±í³¤
+//å–è¡¨é•¿
 int getLen(LinkList  L) {
     int count = 0;
     while (L ->next!= NULL) {
@@ -140,7 +140,7 @@ int getLen(LinkList  L) {
 
 
 }
-//ÖµËÑË÷
+//å€¼æœç´¢
 int seachLinkList(LinkList L, ElemType e) {
     int count = 0;\
         while (L != NULL) {
@@ -154,7 +154,7 @@ int seachLinkList(LinkList L, ElemType e) {
     return count;
 
 }
-//Î»Ğò²éÕÒ
+//ä½åºæŸ¥æ‰¾
 int seach1LinkList(LinkList L, int pos) {
     if (pos<1 || pos>getLen(L))return -1;
     while (pos--) {
@@ -162,7 +162,7 @@ int seach1LinkList(LinkList L, int pos) {
        
     } return L->val;
 }
-//ĞŞ¸Ä
+//ä¿®æ”¹
 Status modifyLinkList(LinkList& L, int pos, ElemType e) {
     if(pos<1||pos>getLen(L) + 1) return -1;
     LNode* r;
@@ -176,9 +176,9 @@ Status modifyLinkList(LinkList& L, int pos, ElemType e) {
 
 
 }
-//²åÈë
+//æ’å…¥
 Status insertLinkList(LinkList &L, int pos, ElemType e) {
-    if (pos < 1 || pos > getLen(L) + 1) return -1; //²åÈëÎ»ÖÃ´íÎó
+    if (pos < 1 || pos > getLen(L) + 1) return -1; //æ’å…¥ä½ç½®é”™è¯¯
     LNode *n;
     LNode *r = L;   
     n = (LNode*)malloc(sizeof(LNode));
@@ -194,7 +194,7 @@ Status insertLinkList(LinkList &L, int pos, ElemType e) {
     return 1;
 
 }
-//É¾³ı
+//åˆ é™¤
 Status deleteLinkList(LinkList &L, int pos, ElemType &e) {
     LNode *p = L,*q;
     if (pos > getLen(L) + 1) return -1;
@@ -220,7 +220,7 @@ Status deleteLinkList(LinkList &L, int pos, ElemType &e) {
     return 1;
 
 }
-//´òÓ¡
+//æ‰“å°
 void printLinkList(LinkList L) {
     LNode* node;
     node = L->next;
@@ -229,7 +229,7 @@ void printLinkList(LinkList L) {
         node = node->next;
     }
 }
-//Ïú»ÙÁ´±í
+//é”€æ¯é“¾è¡¨
 void DestoryLinkList(LinkList &L)
 {
     LNode* p;
@@ -240,13 +240,13 @@ void DestoryLinkList(LinkList &L)
         free(p);
     };
 }
-//ÅĞ¿Õ
+//åˆ¤ç©º
 void ListIsEmpty(LinkList &L)
 {
     if (L == NULL) {
-        printf("¿Õ");
+        printf("ç©º");
     }
     else {
-        printf("·Ç¿Õ");
+        printf("éç©º");
     }
 }
